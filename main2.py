@@ -1,29 +1,36 @@
+current_arr_size = 100
+
+words = []
+frequency: list = [0 for x in range(current_arr_size)]
+
 with open("wordlist.txt") as file:
-    for line in file.readlines():
-        #words.append(line)
+    words = file.readlines()
+
+words = words[:current_arr_size]
 
 def gen_parameters(word_list):
-    a = 0
-    b = 0
-    pass
-
-["hello", "hi", "rpoeajkrpoejkorjeporj", "bye"]
-len(list) = 4
-
-hash table -> array, index == hash(key), element = key
-1.3 * key = size of array
-
-key amount = size of array
-1 * key = size of array
-
-hash(key) -> unique index with no collision.  # 1 to 1
-                    ^ dependent on hash function AND the set of data
-
-def hash(k): return (((a*k + b) % p) % m)
-
-def gen_parameters(word_list):
+    a = 1
+    b = 1
     return a, b
 
-k is in [data set]
-use_hash(a, b, k):
-    return (((a*k + b) % p) % m)
+a, b = gen_parameters(words)
+
+def djb2(a, b, raw) -> int:
+    h = a
+    for c in raw:
+        h = ((h << b) + h) + ord(c)
+    return int(h) % current_arr_size
+
+for i in words:
+    frequency[djb2(a, b, i)] += 1
+
+collisions = 0
+for i in frequency:
+    if i > 1:
+        collisions += (i - 1)
+
+count = 0
+
+print(frequency)
+
+# Can you judge future parameters on past performance?
