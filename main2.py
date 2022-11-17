@@ -4,9 +4,7 @@ words = []
 frequency: list = [0 for x in range(current_arr_size)]
 
 with open("wordlist.txt") as file:
-    words = file.readlines()
-
-words = words[:current_arr_size]
+    words = file.readlines()[:current_arr_size]
 
 def gen_parameters(word_list):
     a = 1
@@ -24,13 +22,8 @@ def djb2(a, b, raw) -> int:
 for i in words:
     frequency[djb2(a, b, i)] += 1
 
-collisions = 0
-for i in frequency:
-    if i > 1:
-        collisions += (i - 1)
-
-count = 0
-
+collisions = len(list(filter(lambda x: not x, frequency)))
+print(collisions)
 print(frequency)
 
 # Can you judge future parameters on past performance?
