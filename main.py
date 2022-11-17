@@ -7,8 +7,6 @@ with open("wordlist.txt") as file:
     for line in file.readlines():
         words.append(line)
 
-arr = ['' for i in range(len(words))]
-
 char_to_int = {'a': '0', 'b': '1', 'c': '2', 'd': '3',
 'e': '4', 'f': '5', 'g': '6', 'h': '7', 'i': '8', 
 'j': '9', 'k': '10', 'l': '11', 'm': '12', 'n': '13',
@@ -24,7 +22,6 @@ def conv_str_to_int(word):
     return word_
 
 ord_arr = [conv_str_to_int(words[i]) for i in range(len(words))]
-print(ord_arr)
 
 def hash(word):
     a = 0
