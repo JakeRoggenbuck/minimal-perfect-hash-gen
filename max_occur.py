@@ -8,7 +8,7 @@ Pairs with main3.py
 words = []
 letter_max_occurrence = {}
 
-alpha = "abcdefghijklmnopqrstuvwxyz"
+alpha = "abcdefghijklmnopqrstuvwxyzI"
 for letter in alpha:
     letter_max_occurrence[letter] = 0
 
