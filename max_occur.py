@@ -15,6 +15,9 @@ for letter in alpha:
 with open("wordlist.txt") as file:
     for word in file.readlines():
         local_letter_occurrence = {}
-        
-
-print(letter_max_occurrence)
+        for letter in word.rstrip():
+            if letter in local_letter_occurrence:
+                local_letter_occurrence[letter] += 1
+            else:
+                local_letter_occurrence[letter] = 1
+            
