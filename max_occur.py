@@ -20,4 +20,8 @@ with open("wordlist.txt") as file:
                 local_letter_occurrence[letter] += 1
             else:
                 local_letter_occurrence[letter] = 1
-            
+            for letter in letter_max_occurrence:
+                if local_letter_occurrence.get(letter, 0) > letter_max_occurrence[letter]:
+                    letter_max_occurrence[letter] = local_letter_occurrence[letter]
+
+print(letter_max_occurrence)
