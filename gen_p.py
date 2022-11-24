@@ -25,3 +25,16 @@ def c(k) -> int:
 word_to_c = {}
 
 with open("wordlist.txt") as file:
+    for word in file.readlines():
+        word_to_c[word] = c(word)
+
+# Sanity check: assert no repeats in word_to_c.values(). If no print, each k has a unique c :)
+freq = {}
+for c in word_to_c.values():
+    if c in freq:
+        print(c)
+print("...")
+
+
+
+    
