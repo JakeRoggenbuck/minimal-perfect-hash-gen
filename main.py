@@ -61,8 +61,16 @@ for t in threads:
 
 print(best_of_the_best)
 
-def list_sort(bests):
-    count = 0
+def get_best(bests):
+    best_list = []
+    best_count = 10000000
     for i in bests:
-        #count += (bests[i][0] + bests[i][1])
+        count = 0
+        count += (i[0] + i[1])
+        if count < best_count:
+            best_list = i
+    return best_list
+
+get_best(best_of_the_best)
+
     
