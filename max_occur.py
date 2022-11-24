@@ -11,7 +11,7 @@ alpha = "abcdefghijklmnopqrstuvwxyzI"
 for letter in alpha:
     letter_max_occurrence[letter] = 0
 
-with open("../wordlist.txt") as file:
+with open("wordlist.txt") as file:
     for word in file.readlines():
         local_letter_occurrence = {}
         for letter in word.rstrip():
