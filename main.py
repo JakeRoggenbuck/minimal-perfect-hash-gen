@@ -64,5 +64,5 @@ print(best_of_the_best)
 def list_sort(bests):
     count = 0
     for i in bests:
-        count += (bests[i][0] + bests[i][1])
+        #count += (bests[i][0] + bests[i][1])
     
