@@ -68,9 +68,9 @@ def get_best(bests):
         count = 0
         count += (i[0] + i[1])
         if count < best_count:
+            best_count = count
             best_list = i
     return best_list
 
-get_best(best_of_the_best)
-
+print(f'a: {get_best(best_of_the_best)[0]} \nb: {get_best(best_of_the_best)[1]}')
     
