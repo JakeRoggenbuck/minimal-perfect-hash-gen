@@ -34,6 +34,7 @@ def h2(a, b, raw) -> int:
 
 # Can you judge future parameters on past performance?
 best_of_the_best = []
+coll = [] # SCUFFED but it is fine.
 def gen_parameters(word_list, thread_num):
     start = (current_arr_size // thread_count) * (thread_num - 1)
     end = (current_arr_size // thread_count) * (thread_num)
@@ -42,13 +43,14 @@ def gen_parameters(word_list, thread_num):
     for a in range(start, end):
         for b in range(1, current_arr_size):
             frequency: list = [0 for x in range(current_arr_size)]
-            for i in words:
+            for i in word_list:
                 frequency[h_(a, b, i)] += 1
             collisions = len(list(filter(lambda x: not x, frequency)))
             if count > collisions:
                 count = collisions
                 best = [a, b]
     best_of_the_best.append(best)
+    coll.append(count)
 
 threads = []
 for x in range(thread_count): 
@@ -72,5 +74,5 @@ def get_best(bests):
             best_list = i
     return best_list
 
-print(f'a: {get_best(best_of_the_best)[0]} \nb: {get_best(best_of_the_best)[1]}')
-    
+print(f'a: {get_best(best_of_the_best)[0]} \nb: {get_best(best_of_the_best)[1]} \ncoll: {coll[0]}')
+ 
