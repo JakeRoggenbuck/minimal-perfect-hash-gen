@@ -48,7 +48,7 @@ def gen_parameters(word_list, thread_num):
             if count > collisions:
                 count = collisions
                 best = [a, b]
-    best_of_the_best.append([best, count])
+    best_of_the_best.append(best)
 
 threads = []
 for x in range(thread_count): 
