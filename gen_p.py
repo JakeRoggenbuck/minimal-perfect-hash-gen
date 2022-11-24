@@ -5,6 +5,8 @@ c is a unique integer string unique to any alpha string
 Teo Honda-Scully | 2022 
 """
 
+from math import floor, sqrt
+
 char_to_int = {'\n': 0, 'a': 1, 'b': 6, 'c': 25, 'd': 101, 'e': 405, 
 'f': 2836, 'g': 11345, 'h': 45381, 'i': 136144, 'j': 953009, 
 'k': 1906019, 'l': 7624077, 'm': 38120386, 'n': 152481545, 
@@ -35,6 +37,29 @@ for c in word_to_c.values():
         print(c)
 print("...")
 
+for c in word_to_c.values():
+    if c > q:
+        q = c
 
+# Adjusted from https://www.geeksforgeeks.org/nearest-prime-less-given-number-n/
+def nearest_prime(n):
+    if (n & 1):
+        n -= 2
+    else:
+        n -= 1
+    i,j = 0,3
+    for i in range(n, 2, -2):
+        if(i % 2 == 0):
+            continue
+        while(j <= floor(sqrt(i)) + 1):
+            if (i % j == 0):
+                break
+            j += 2
+        if (j > floor(sqrt(i))):
+            return i
+    return 2
+
+print("Please wait...")
+print(nearest_prime(q))
 
     
