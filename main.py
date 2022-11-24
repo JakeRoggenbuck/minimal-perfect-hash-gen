@@ -1,6 +1,6 @@
 import threading
 
-current_arr_size = 100
+current_arr_size = 200
 thread_count = 4
 
 words = []
@@ -28,6 +28,12 @@ def h2(a, b, raw) -> int:
         c %= b
     return c % current_arr_size
 
+def h3(a, b, k) -> int:
+    c = '0'
+    for i in k:
+        c += char_to_int[i]
+    q = (a * c + b) % p
+    return q % current_arr_size
 #sort()
 
 # h(k) = ((ak + b)%p)%m
