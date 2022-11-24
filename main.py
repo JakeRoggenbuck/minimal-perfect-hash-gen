@@ -26,6 +26,7 @@ def h2(a, b, raw) -> int:
     for i in raw:
         c += char_to_int[i] + a
         c %= b
+        print(type(a))
     return c % current_arr_size
 
 def h3(a, b, k) -> int:
@@ -34,7 +35,6 @@ def h3(a, b, k) -> int:
         c += char_to_int[i]
     q = (a * c + b) % p
     return q % current_arr_size
-#sort()
 
 # h(k) = ((ak + b)%p)%m
 
@@ -50,7 +50,7 @@ def gen_parameters(word_list, thread_num):
         for b in range(1, current_arr_size):
             frequency: list = [0 for x in range(current_arr_size)]
             for i in word_list:
-                frequency[h_(a, b, i)] += 1
+                frequency[h2(a, b, i)] += 1
             collisions = len(list(filter(lambda x: not x, frequency)))
             if count > collisions:
                 count = collisions
