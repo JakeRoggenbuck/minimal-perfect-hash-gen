@@ -1,7 +1,6 @@
 """
 Returns a key-value map of data of each letter's max occurrence in a single word per file
 Teo Honda-Scully | 2022. 
-
 Pairs with main3.py
 """
 
@@ -12,7 +11,7 @@ alpha = "abcdefghijklmnopqrstuvwxyzI"
 for letter in alpha:
     letter_max_occurrence[letter] = 0
 
-with open("wordlist.txt") as file:
+with open("../wordlist.txt") as file:
     for word in file.readlines():
         local_letter_occurrence = {}
         for letter in word.rstrip():
@@ -24,4 +23,12 @@ with open("wordlist.txt") as file:
                 if local_letter_occurrence.get(letter, 0) > letter_max_occurrence[letter]:
                     letter_max_occurrence[letter] = local_letter_occurrence[letter]
 
-print(letter_max_occurrence)
+# Prints the raw max letter occurrence (ex. 7 e's means 1 word in wordlist.txt contains 7 e's)
+print(str(letter_max_occurrence) + "\n")
+
+char_to_int = {'a' : 1}
+for key in letter_max_occurrence:
+    if key == 'a':
+        continue
+    char_to_int[key] = char_to_int[alpha[alpha.index(key) - 1]] * letter_max_occurrence[alpha[alpha.index(key) - 1]] + 1
+print(char_to_int)
