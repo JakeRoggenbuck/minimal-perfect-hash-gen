@@ -6,13 +6,14 @@ Pairs with main3.py
 
 words = []
 letter_max_occurrence = {}
+current_arr_size = 600
 
 alpha = "abcdefghijklmnopqrstuvwxyzI"
 for letter in alpha:
     letter_max_occurrence[letter] = 0
 
 with open("wordlist.txt") as file:
-    for word in file.readlines():
+    for word in file.readlines()[:current_arr_size]:
         local_letter_occurrence = {}
         for letter in word.rstrip():
             if letter in local_letter_occurrence:
