@@ -33,3 +33,9 @@ for key in letter_max_occurrence:
         continue
     char_to_int[key] = char_to_int[alpha[alpha.index(key) - 1]] * letter_max_occurrence[alpha[alpha.index(key) - 1]] + 1
 print(char_to_int)
+
+def get_char_to_int():
+    return char_to_int
+
+def get_arr_size():
+    return current_arr_size
