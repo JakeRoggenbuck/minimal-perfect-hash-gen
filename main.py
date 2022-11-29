@@ -1,8 +1,8 @@
 import threading
 
-current_arr_size = 600
+current_arr_size = 200
 thread_count = 4
-p = 421693816493 # from gen_p.py
+p = 39121129 # from gen_p.py
 
 words = []
 
@@ -11,25 +11,11 @@ char_to_int = {'\n': 0, 'a': 1, 'b': 6, 'c': 19, 'd': 20, 'e': 41, 'f': 165, 'g'
 with open("wordlist.txt") as file:
     words = file.readlines()[:current_arr_size]
 
-def h_(a, b, raw) -> int:
-    h = a
-    for c in raw:
-        h = ((h << b) + h) + ord(c)
-    return int(h) % current_arr_size
-
-def h2(a, b, raw) -> int:
-    c = '0'
-    for i in raw:
-        c += char_to_int[i] + a
-        c %= b
-        print(type(a))
-    return c % current_arr_size
-
-def h3(a, b, k) -> int:
+def h(a, b, k) -> int:
     c = 0
     for i in k:
         c += char_to_int[i]
-    q = (a * c + b) % p
+    q = (a * c // b) % p
     return q % current_arr_size
 
 # h(k) = ((ak + b)%p)%m
@@ -46,7 +32,7 @@ def gen_parameters(word_list, thread_num):
         for b in range(1, current_arr_size):
             frequency: list = [0 for x in range(current_arr_size)]
             for i in word_list:
-                frequency[h3(a, b, i)] += 1
+                frequency[h(a, b, i)] += 1
             collisions = len(list(filter(lambda x: not x, frequency)))
             if count > collisions:
                 count = collisions
